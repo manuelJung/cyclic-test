@@ -30,6 +30,10 @@ app.use(async (req, res) => {
   res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
 })
 
+app.get('/simple', (req, res) => {
+  res.status(200).send('simple')
+})
+
 mongoose.connect(uri, err => {
   if(err){ console.error(err); return false;}
   // connection to mongo is successful, listen for requests
