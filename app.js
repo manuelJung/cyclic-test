@@ -22,7 +22,7 @@ app.get('/simple', (req, res) => {
 })
 
 app.use(async (req, res) => {
-  res.status(200).send('test')
+  // res.status(200).send('test')
   // const pw = await bcrypt.hash('foo', 10)
   // const equal = await bcrypt.compare('foo', pw)
   // const token = crypto.randomBytes(64).toString('hex')
@@ -30,9 +30,9 @@ app.use(async (req, res) => {
   // fs.writeFileSync(filename, 'Helllo World!', 'utf-8')
   // const data = fs.readFileSync(filename, 'utf-8')
 
-  // let item = await Answer.findById('unknown')
+  let items = await Answer.find()
 
-  // res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
+  res.status(200).send(items)
 })
 
 mongoose.connect(uri, err => {
