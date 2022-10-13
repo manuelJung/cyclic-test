@@ -10,7 +10,8 @@ const DB_NAME = 'devq'
 const PORT = 3000
 
 const uri = 'mongodb+srv://mjung:mongotest@cluster0.di05mk9.mongodb.net/?retryWrites=true&w=majority';
-const client = new mongoose.MongoClient(uri)
+// const client = new mongoose.MongoClient(uri)
+
 
 
 const app = express()
@@ -30,7 +31,7 @@ app.use(async (req, res) => {
   res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
 })
 
-client.connect(err => {
+mongoose.connect(uri, err => {
   if(err){ console.error(err); return false;}
   // connection to mongo is successful, listen for requests
   app.listen(PORT, () => {
