@@ -11,7 +11,7 @@ app.use(async (req, res) => {
   const pw = await bcrypt.hash('foo', 10)
   const equal = await bcrypt.compare('foo', pw)
   const token = crypto.randomBytes(64).toString('hex')
-  const filename = '/tmp/uploads/test.txt'
+  const filename = '/tmp/test.txt'
   fs.writeFileSync(filename, 'Helllo World!', 'utf-8')
   const data = fs.readFileSync(filename, 'utf-8')
 
