@@ -17,6 +17,10 @@ const uri = 'mongodb+srv://mjung:mongotest@cluster0.di05mk9.mongodb.net/?retryWr
 
 const app = express()
 
+app.get('/simple', (req, res) => {
+  res.status(200).send('simple')
+})
+
 app.use(async (req, res) => {
   const pw = await bcrypt.hash('foo', 10)
   const equal = await bcrypt.compare('foo', pw)
@@ -28,10 +32,6 @@ app.use(async (req, res) => {
   let item = await Answer.findById('unknown')
 
   res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
-})
-
-app.get('/simple', (req, res) => {
-  res.status(200).send('simple')
 })
 
 mongoose.connect(uri, err => {
