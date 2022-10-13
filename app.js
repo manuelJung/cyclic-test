@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 const fs = require('fs')
 const mongoose = require('mongoose')
+const Answer = require('./models/Answer')
 
 const DB_URL = '0.0.0.0'
 const DB_PORT = 27017
@@ -24,9 +25,7 @@ app.use(async (req, res) => {
   fs.writeFileSync(filename, 'Helllo World!', 'utf-8')
   const data = fs.readFileSync(filename, 'utf-8')
 
-  let item = await client.db("my_db")
-                .collection("my_collection")
-                .findOne({my_item: my_item})
+  let item = await Answer.findById('unknown')
 
   res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
 })
