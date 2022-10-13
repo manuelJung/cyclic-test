@@ -22,16 +22,17 @@ app.get('/simple', (req, res) => {
 })
 
 app.use(async (req, res) => {
-  const pw = await bcrypt.hash('foo', 10)
-  const equal = await bcrypt.compare('foo', pw)
-  const token = crypto.randomBytes(64).toString('hex')
-  const filename = '/tmp/test.txt'
-  fs.writeFileSync(filename, 'Helllo World!', 'utf-8')
-  const data = fs.readFileSync(filename, 'utf-8')
+  res.status(200).send('test')
+  // const pw = await bcrypt.hash('foo', 10)
+  // const equal = await bcrypt.compare('foo', pw)
+  // const token = crypto.randomBytes(64).toString('hex')
+  // const filename = '/tmp/test.txt'
+  // fs.writeFileSync(filename, 'Helllo World!', 'utf-8')
+  // const data = fs.readFileSync(filename, 'utf-8')
 
-  let item = await Answer.findById('unknown')
+  // let item = await Answer.findById('unknown')
 
-  res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
+  // res.status(200).send(`${data}. equal: ${equal}, token:${token}, item: ${item}`)
 })
 
 mongoose.connect(uri, err => {
